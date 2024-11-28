@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <cmath>
 #include <vector>
+#include <limits>
 
 using namespace std; // this allows std functions to be called without std::
 
@@ -21,16 +22,7 @@ int main(){
 	// another way using the printf function, requires stdio library
 	printf("third way to print");
 
-	bool true_or_false; // 1 byte
-	cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << endl;
-
-	short int short_integer; // 2 bytes
-	cout << "sizeof short int: " << sizeof(short int) << " bytes" << endl;
-
-	int an_integer; // 4 bytes
-	cout << "sizeof int: " << sizeof(int) << " bytes" << endl;
-
-	// for printf integer types
+    // printf function integer types for embedding numeric variables in strings
 	// int => "%d"
 	// long => "%ld"
 	// long long => "%lld"
@@ -41,20 +33,49 @@ int main(){
 	// double => "%f"
 	// long double => "%Lf"
 
+    std::cout << std::boolalpha; // print  boolean values as true or false instead of 1 or 0
+	bool true_or_false = false; // 1 byte
+    std::cout << "bool = " << true_or_false << std::endl;
+	std::cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << std::endl;
+
+	short int short_integer; // 2 bytes
+	cout << "sizeof short int: " << sizeof(short int) << " bytes" << endl;
+
+	int an_integer = 10; // 4 bytes
+    // the << operater works right to left, >> works left to right
+    std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
+    std::cout << std::showbase; // prints the base 0x
+    std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
+
+    // limits library
+    unsigned int max_number = std::numeric_limits<unsigned int>::max();
+    std::cout << max_number << std::endl;
+
     long a_long_number = 34345345;
     cout << "the number is " << a_long_number << endl;
 
-    auto y = 3456ll; // automatically convert variable to long long
-    std::cout << sizeof(y) << std::endl;
+    auto unsigned_long_auto = 34987897897898756ul; // automatically convert variable to unsigned long 8 bytes
+    std::cout << sizeof(unsigned_long_auto) << std::endl;
 
-	// when a character type exceeds size value in a loop, the result is infinite loop
-	for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
+    auto long_long_auto = 3456ll; // automatically convert variable to long long 8 bytes
+    std::cout << sizeof(long_long_auto) << std::endl;
+
+    // functions from the cmath library
+    float pi = std::acos(-1);
+    std::cout << "pi = " << pi << std::endl;
+
+    std::cout << "e = " << std::exp(1) << std::endl;
+    std::cout << "log(e) = " << std::log(std::exp(1)) << std::endl;
+    std::cout << "log10(1000) = " << std::log10(1000) << std::endl;
 
 	// creating a single character, single quotes only, takes 1 byte (or 8 bits)
 	char single_character = 'c';
 
     char a = 97; 
     std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
+
+    // when a character type exceeds size value in a loop, the result is infinite loop
+	for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
 
 	// creating a string, must be created with double quotes
 	char str[] = "this is foo";
