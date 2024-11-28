@@ -9,7 +9,7 @@ using namespace std; // this allows std functions to be called without std::
 #define variable 5 // this is a preprocessor, variable is now globally available and its value is 5
 
 int main(){
-	// to print to the console, double quotes, requires iostream library, using namespace std
+    // to print to the console, double quotes, requires iostream library, using namespace std
 
     // std::cout is for printing to terminal
     // std::cin is for reading from terminal
@@ -68,8 +68,8 @@ int main(){
     std::cout << "log(e) = " << std::log(std::exp(1)) << std::endl;
     std::cout << "log10(1000) = " << std::log10(1000) << std::endl;
 
-	// creating a single character, single quotes only, takes 1 byte (or 8 bits)
-	char single_character = 'c';
+    // creating a single character, single quotes only, takes 1 byte (or 8 bits)
+    char single_character = 'c';
 
     char a = 97; 
     std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
