@@ -14,51 +14,21 @@ int main(){
     // std::cin is for reading from terminal
     // std::cerr is for printing errors to the terminal
     // std::clog is for printing log messages to the console
-    
-	cout << "foo is here\n";
+
+	cout << "testing print ... \n";
 	// another way
-	cout << "bar is here" << endl;
+	cout << "another print ..." << endl;
 	// another way using the printf function, requires stdio library
 	printf("third way to print");
 
-	bool true_or_false; // 1 bit
-	cout << "sizeof int: " << sizeof(bool) << " bit" << endl;
+	bool true_or_false; // 1 byte
+	cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << endl;
 
-	short int n; // 2 bytes
-	cout << "sizeof int: " << sizeof(short int) << " bytes" << endl;
+	short int short_integer; // 2 bytes
+	cout << "sizeof short int: " << sizeof(short int) << " bytes" << endl;
 
-	int n; // 4 bytes
+	int an_integer; // 4 bytes
 	cout << "sizeof int: " << sizeof(int) << " bytes" << endl;
-
-	signed int n; // 4 bytes
-	cout << "sizeof int: " << sizeof(signed int) << " bytes" << endl;
-
-	long int n; // 8 bytes
-	cout << "sizeof int: " << sizeof(long int) << " bytes" << endl;
-
-	unsigned long int n;// 8 bytes
-	cout << "sizeof int: " << sizeof(unsigned long int) << " bytes" << endl;
-
-	signed long int n;// 8 bytes
-	cout << "sizeof int: " << sizeof(signed long int) << " bytes" << endl;
-
-	float n;// 4 bytes
-	cout << "sizeof int: " << sizeof(float) << " bytes" << endl;
-
-	double n;// 8 bytes
-	cout << "sizeof int: " << sizeof(double) << " bytes" << endl;
-
-	char str;// 1 byte
-	cout << "sizeof int: " << sizeof(char) << " bytes" << endl;
-
-	signed char str;// 1 byte
-	cout << "sizeof int: " << sizeof(signed char) << " bytes" << endl;
-
-	unsigned char str;// 1 byte
-	cout << "sizeof int: " << sizeof(unsigned char) << " bytes" << endl;
-
-	wchar_t n;// 4 bytes
-	cout << "sizeof int: " << sizeof(wchar_t) << " bytes" << endl;
 
 	// for printf integer types
 	// int => "%d"
@@ -71,14 +41,23 @@ int main(){
 	// double => "%f"
 	// long double => "%Lf"
 
+    long a_long_number = 34345345;
+    cout << "the number is " << a_long_number << endl;
+
+    auto y = 3456ll; // automatically convert variable to long long
+    std::cout << sizeof(y) << std::endl;
+
 	// when a character type exceeds size value in a loop, the result is infinite loop
 	for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
 
-	// creating a single character, single quotes only
+	// creating a single character, single quotes only, takes 1 byte (or 8 bits)
 	char single_character = 'c';
 
+    char a = 97; 
+    std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
+
 	// creating a string, must be created with double quotes
-	char str[] = "this is foo"
+	char str[] = "this is foo";
 
 	// creating an array of int type
 	int arr[] = {0,1,2,3,4,5};
@@ -87,7 +66,7 @@ int main(){
 	int arr[5] = {0, 1, 2, 3, 4};
 
 	// pointer is created with an *, and it must be the same data type as the data its pointing to
-	int * pointer = &arr; 
+	int *pointer = &arr; 
 
 	// pointer is derefenced by * pointer to get the value
 	cout << "The pointer is derefenced, the value at this pointer is " << * pointer << endl;
@@ -108,7 +87,7 @@ int main(){
 	};
 
 	// function for allocating a node
-	Node* newNode( int key ){
+	Node *newNode(int key){
 		Node* n = new Node;
 		n->key = key;
 		n->left = nullptr;
@@ -131,7 +110,7 @@ int main(){
 			// this is a constructor that doen't require objects to have required variables
 			Made_up_class(){
 				n = 0;
-				character = ''
+				character = '';
 			}
 
 			// this is a defined constructor object
@@ -143,6 +122,7 @@ int main(){
 
 	// creating a vector out of an existing array
 	int existing_array[] = {5,3,6,7,2,1,0,50};
+
 	std::vector<int> make_vector_out_of_array(existing_array, 
 											  existing_array + in_int_size_of_existing_array);
 
