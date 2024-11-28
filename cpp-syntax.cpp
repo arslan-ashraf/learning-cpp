@@ -16,32 +16,32 @@ int main(){
     // std::cerr is for printing errors to the terminal
     // std::clog is for printing log messages to the console
 
-	cout << "testing print ... \n";
-	// another way
-	cout << "another print ..." << endl;
-	// another way using the printf function, requires stdio library
-	printf("third way to print");
+    cout << "testing print ... \n";
+    // another way
+    cout << "another print ..." << endl;
+    // another way using the printf function, requires stdio library
+    printf("third way to print");
 
     // printf function integer types for embedding numeric variables in strings
-	// int => "%d"
-	// long => "%ld"
-	// long long => "%lld"
-	// unsigned => "%u"
-	// unsigned long => "%lu"
-	// unsigned long long => "%llu"
-	// float => "%f"
-	// double => "%f"
-	// long double => "%Lf"
+    // int => "%d"
+    // long => "%ld"
+    // long long => "%lld"
+    // unsigned => "%u"
+    // unsigned long => "%lu"
+    // unsigned long long => "%llu"
+    // float => "%f"
+    // double => "%f"
+    // long double => "%Lf"
 
     std::cout << std::boolalpha; // print  boolean values as true or false instead of 1 or 0
-	bool true_or_false = false; // 1 byte
+    bool true_or_false = false; // 1 byte
     std::cout << "bool = " << true_or_false << std::endl;
-	std::cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << std::endl;
+    std::cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << std::endl;
 
-	short int short_integer; // 2 bytes
-	cout << "sizeof short int: " << sizeof(short int) << " bytes" << endl;
+    short int short_integer; // 2 bytes
+    cout << "sizeof short int: " << sizeof(short int) << " bytes" << endl;
 
-	int an_integer = 10; // 4 bytes
+    int an_integer = 10; // 4 bytes
     // the << operater works right to left, >> works left to right
     std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
     std::cout << std::showbase; // prints the base 0x
@@ -75,107 +75,107 @@ int main(){
     std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
 
     // when a character type exceeds size value in a loop, the result is infinite loop
-	for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
+    for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
 
-	// creating a string, must be created with double quotes
-	char str[] = "this is foo";
+    // creating a string, must be created with double quotes
+    char str[] = "this is foo";
 
-	// creating an array of int type
-	int arr[] = {0,1,2,3,4,5};
+    // creating an array of int type
+    int arr[] = {0,1,2,3,4,5};
 
-	// creating an array of fixed size
-	int arr[5] = {0, 1, 2, 3, 4};
+    // creating an array of fixed size
+    int arr[5] = {0, 1, 2, 3, 4};
 
-	// pointer is created with an *, and it must be the same data type as the data its pointing to
-	int *pointer = &arr; 
+    // pointer is created with an *, and it must be the same data type as the data its pointing to
+    int *pointer = &arr; 
 
-	// pointer is derefenced by * pointer to get the value
-	cout << "The pointer is derefenced, the value at this pointer is " << * pointer << endl;
+    // pointer is derefenced by * pointer to get the value
+    cout << "The pointer is derefenced, the value at this pointer is " << * pointer << endl;
 
-	// floating arrithmetic with ints
-	int numerator = 5;
+    // floating arrithmetic with ints
+    int numerator = 5;
 
-	int denomicator = 15;
+    int denomicator = 15;
 
-	double fraction = (double)numerator/denomicator;
+    double fraction = (double)numerator/denomicator;
 
-	// struct 
-	struct Node {
-		int key;
-		Node *left;
-		Node *right;
-		Node *parent;
-	};
+    // struct 
+    struct Node {
+        int key;
+        Node *left;
+        Node *right;
+        Node *parent;
+    };
 
-	// function for allocating a node
-	Node *newNode(int key){
-		Node* n = new Node;
-		n->key = key;
-		n->left = nullptr;
-		n->right = nullptr;
-		n->parent = nullptr;
-		return n;
-	}
+    // function for allocating a node
+    Node *newNode(int key){
+        Node* n = new Node;
+        n->key = key;
+        n->left = nullptr;
+        n->right = nullptr;
+        n->parent = nullptr;
+        return n;
+    }
 
 
-	// setting up a class
-	class Made_up_class {
+    // setting up a class
+    class Made_up_class {
 
-		// private variables and functions
-		private:
+        // private variables and functions
+        private:
 
-		// public variables and functions
-		public:
-			int n;
-			char character;
-			// this is a constructor that doen't require objects to have required variables
-			Made_up_class(){
-				n = 0;
-				character = '';
-			}
+        // public variables and functions
+        public:
+            int n;
+            char character;
+            // this is a constructor that doen't require objects to have required variables
+            Made_up_class(){
+                n = 0;
+                character = '';
+            }
 
-			// this is a defined constructor object
-			Made_up_class(int number, char single_character){
-				n = number;
-				character = single_character;
-			}
-	}
+            // this is a defined constructor object
+            Made_up_class(int number, char single_character){
+                n = number;
+                character = single_character;
+            }
+    }
 
-	// creating a vector out of an existing array
-	int existing_array[] = {5,3,6,7,2,1,0,50};
+    // creating a vector out of an existing array
+    int existing_array[] = {5,3,6,7,2,1,0,50};
 
-	std::vector<int> make_vector_out_of_array(existing_array, 
-											  existing_array + in_int_size_of_existing_array);
+    std::vector<int> make_vector_out_of_array(existing_array, 
+                                                existing_array + in_int_size_of_existing_array);
 
-	// to not use std::sort and just use sort, type: using namespace std; at the top
-	// sorting an array
-	// full sort
-	std::sort(my_vector.begin(), my_vector.end());
-	// partial sort from beginning to somewhere in the middle
-	std::sort(my_vector.begin(), my_vector.end() + number);
-	// partial sort starting from the middle somewhere up to end
-	std::sort(my_vector.begin() + number, my_vector.end());
+    // to not use std::sort and just use sort, type: using namespace std; at the top
+    // sorting an array
+    // full sort
+    std::sort(my_vector.begin(), my_vector.end());
+    // partial sort from beginning to somewhere in the middle
+    std::sort(my_vector.begin(), my_vector.end() + number);
+    // partial sort starting from the middle somewhere up to end
+    std::sort(my_vector.begin() + number, my_vector.end());
 
-	// convert string to number
-	// if string_pointer is not null, function will set set value of idx to position of
-	// first character
-	int string_to_integer = std::stoi(string, string_pointer_called_idx, specify_base_here)
+    // convert string to number
+    // if string_pointer is not null, function will set set value of idx to position of
+    // first character
+    int string_to_integer = std::stoi(string, string_pointer_called_idx, specify_base_here)
 
-	// for loop with auto before beginning of the loop
-	for(auto i = variable_here; variable_here < something; variable_here increment/decrement){}
+    // for loop with auto before beginning of the loop
+    for(auto i = variable_here; variable_here < something; variable_here increment/decrement){}
 
-	// pushing and popping from array vector 
-	my_vector.push_back(*pointer_to_some_value)
-	my_vector.pop_back()
+    // pushing and popping from array vector 
+    my_vector.push_back(*pointer_to_some_value)
+    my_vector.pop_back()
 
-	// string length
-	str.length()
+    // string length
+    str.length()
 
-	// unordered hashmap
-	std::unordered_map<std::string, int> hashmap_name;
-	hashmap_name["key"] = 1;
+    // unordered hashmap
+    std::unordered_map<std::string, int> hashmap_name;
+    hashmap_name["key"] = 1;
 
-	// // check if key is present
-	// if(hashmap_name.find("key") != hashmap_name.end())
-	return 0;
+    // // check if key is present
+    // if(hashmap_name.find("key") != hashmap_name.end())
+    return 0;
 }
