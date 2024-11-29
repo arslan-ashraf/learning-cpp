@@ -3,29 +3,22 @@
 
 using namespace std;
 
-void reverse_primes(int *pointer_primes, int arr_size){
-    int *end = pointer_primes + arr_size - 1;
-    int temp;
-    while (pointer_primes <= end){
-        temp = *pointer_primes;
-        *pointer_primes = *end;
-        *end = temp;
-        pointer_primes += 1;
-        end -= 1;
+int add_primes(int primes[], int num_primes){
+    int total = 0;
+    for (int i = 0; i < num_primes; i++){
+        total += primes[i];
     }
+    return total;
 }
 
 int main(){
 
     int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
-    int n = size(primes);
-    int *pointer_primes = primes;
+    int num_primes = size(primes);
 
-    reverse_primes(pointer_primes, n);
+    int sum_of_primes = add_primes(primes, num_primes);
 
-    for (int i = 0; i < n; i++){
-        cout << primes[i] << " ";
-    }
+    cout << "sum of primes: " << sum_of_primes;
 
     return 0;
 }

@@ -149,6 +149,98 @@ int main(){
     // another way to print the array of string
     std::cout << example_string << std::endl;
 
+
+/////////////////////////////////////////////////////////////////////
+///////////////// START - LOOPING THROUGH ARRAYS ////////////////////
+/////////////////////////////////////////////////////////////////////
+
+// REVERSE ARRAY //
+
+    // int *pointer_primes is the same as int pointer_primes[]
+void reverse_primes(int *pointer_primes, int num_primes){
+    int *end = pointer_primes + num_primes - 1;
+    int temp;
+    while (pointer_primes <= end){
+        temp = *pointer_primes;
+        *pointer_primes = *end;
+        *end = temp;
+        pointer_primes += 1;
+        end -= 1;
+    }
+}
+
+int main(){
+
+    int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
+    int num_primes = size(primes);
+    int *pointer_primes = primes;
+
+    reverse_primes(pointer_primes, num_primes);
+
+    for (int i = 0; i < num_primes; i++){
+        cout << primes[i] << " ";
+    }
+
+    return 0;
+}
+
+// REVERSE ARRAY - ANOTHER WAY //
+
+// int primes[] is the same as int *primes
+void reverse_primes(int primes[], int num_primes){
+    int *end = primes + num_primes - 1;
+    int temp;
+    while (primes <= end){
+        temp = *primes;
+        *primes = *end;
+        *end = temp;
+        primes += 1;
+        end -= 1;
+    }
+}
+
+int main(){
+
+    int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
+    int num_primes = size(primes);
+
+    reverse_primes(primes, num_primes);
+
+    for (int i = 0; i < num_primes; i++){
+        cout << primes[i] << " ";
+    }
+
+    return 0;
+}
+
+
+// SUMMING AN ARRAY //
+
+// int primes[] is the same as int *primes
+int add_primes(int primes[], int num_primes){
+    int total = 0;
+    for (int i = 0; i < num_primes; i++){
+        total += primes[i];
+    }
+    return total;
+}
+
+int main(){
+
+    int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
+    int num_primes = size(primes);
+
+    int sum_of_primes = add_primes(primes, num_primes);
+
+    cout << "sum of primes: " << sum_of_primes;
+
+    return 0;
+}
+
+/////////////////////////////////////////////////////////////////////
+////////////////// END - LOOPING THROUGH ARRAYS /////////////////////
+/////////////////////////////////////////////////////////////////////
+
     // struct 
     struct Node {
         int key;
