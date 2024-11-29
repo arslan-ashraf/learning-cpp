@@ -149,27 +149,6 @@ int main(){
     // another way to print the array of string
     std::cout << example_string << std::endl;
 
-    // pointer is created with an *, and it must be the same data type as the data its pointing to
-    int x = 9;
-    double y = 4.984;
-    int *pointer_x = &x;
-    double *pointer_y = &y;
-
-    cout << "address of x: " << pointer_x << endl;
-    cout << "size of pointer_x: " << sizeof(pointer_x) << endl;
-    cout << "address of y: " << pointer_y << endl;
-    cout << "size of pointer_y: " << sizeof(pointer_y) << endl;
-
-    // pointer is derefenced by * pointer to get the value
-    cout << "The pointer is derefenced, the value at this pointer is " << *pointer << endl;
-
-    // floating arrithmetic with ints
-    int numerator = 5;
-
-    int denomicator = 15;
-
-    double fraction = (double)numerator/denomicator;
-
     // struct 
     struct Node {
         int key;
