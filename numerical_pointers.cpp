@@ -23,11 +23,36 @@ int main(){
 ////////////////////////////////////////////////////////////
 //////// CONST POINTERS AND POINTERS TO CONSTANTS //////////
 ////////////////////////////////////////////////////////////
+
 /* 
-    If the variable is constant, then only constant pointers can point to them.
-    However, constant pointers can be changed, if it points to one variable, 
-    it can be changed to point to some other variable of the same type even
-    if the new variable is not constant.
+    If the variable is constant, then only constant pointers can point to them
+    with const appearing first:
+
+    const int x = 9;
+    const int *pointer_x = &x; // changeable constant
+
+    However, this constant pointer (with const appearing first in the pointer) can 
+    be changed. If it points to one variable, it can be changed to point to some other 
+    variable of the same type even if the new variable is not constant:
+
+    int y = 8;
+    pointer_x = &y;
+
+    Constant pointers (with const appearing first in the pointer) can point to 
+    non constant variables but the pointer is still changeable:
+
+    int x = 9;
+    const int *pointer_x = &x;
+
+    int y = 8;
+    pointer_x = &y;
+
+    However, if the const keyword appears after the * in the pointer declaration,
+    then the pointer is itself the constant, it contains a fixed address and cannot 
+    later change its address point to something else:
+
+    int x = 9;
+    int * const pointer_x = &x; // unchangeable pointer
 */
     
     const double integer_constant = 5.9;
