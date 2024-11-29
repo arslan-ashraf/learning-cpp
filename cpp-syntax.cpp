@@ -3,10 +3,16 @@
 #include <cmath>
 #include <vector>
 #include <limits>
+#include <bitset>
 
 using namespace std; // this allows std functions to be called without std::
 
 #define variable 5 // this is a preprocessor, variable is now globally available and its value is 5
+
+// compile time vs run time
+// compile time is turning code into an executable binary
+// run time is running the executable binary
+// heavy computations should be done at comiple time because then they are only done once
 
 int main(){
     // to print to the console, double quotes, requires iostream library, using namespace std
@@ -44,8 +50,20 @@ int main(){
     int an_integer = 10; // 4 bytes
     // the << operater works right to left, >> works left to right
     std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
-    std::cout << std::showbase; // prints the base 0x
-    std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
+    // std::showbase prints the base 0x
+    std::cout << "10 in hexadecimal: " << std::showbase << std::hex << an_integer << std::endl;
+    // use bitset module std::bitset<num_right_most_bits_to_extract>()
+    std::cout << "10 in binary: " << std::bitset<4>(an_integer) << std::endl;
+
+    // bitwise operations
+    int first_number = 3; // 0011
+    int second_number = 5; // 0101
+    std::cout << "bitwise exclusive or result: " << (first_number ^ second_number) << std::endl;
+    std::cout << "exclusive or result in binary: " << std::bitset<4>(first_number ^ second_number) << std::endl;
+    std::cout << "flip bits of 3 = 0011 in binary: " << std::bitset<4>(~first_number) << std::endl;
+
+    // constant
+    const int constant_integer = 1;
 
     // limits library
     unsigned int max_number = std::numeric_limits<unsigned int>::max();
@@ -63,10 +81,24 @@ int main(){
     // functions from the cmath library
     float pi = std::acos(-1);
     std::cout << "pi = " << pi << std::endl;
+    std::cout << "-pi: " << -pi << std::endl;
+    std::cout << "Rounding down pi: " << std::floor(pi) << std::endl;
+    std::cout << "Rounding up pi: " << std::ceil(pi) << std::endl;
+    std::cout << "Absolute value of -pi: " << std::abs(-pi) << std::endl;
 
     std::cout << "e = " << std::exp(1) << std::endl;
     std::cout << "log(e) = " << std::log(std::exp(1)) << std::endl;
     std::cout << "log10(1000) = " << std::log10(1000) << std::endl;
+
+    float x_float = 1.5;
+    float y_float = 3.5;
+
+    // casting types
+    int z_integer = static_cast<int>(x_float) + static_cast<int>(y_float);
+    int z_old_cast = (int)x_float + (int)y_float;
+
+    std::cout << "static_cast z = " << z_integer << std::endl;
+    std::cout << "old c type conversion z = " << z_old_cast << std::endl;
 
     // creating a single character, single quotes only, takes 1 byte (or 8 bits)
     char single_character = 'c';
@@ -81,10 +113,26 @@ int main(){
     char str[] = "this is foo";
 
     // creating an array of int type
-    int arr[] = {0,1,2,3,4,5};
+    int arr[] = { 0, 1, 2, 3, 4, 5 };
 
     // creating an array of fixed size
-    int arr[5] = {0, 1, 2, 3, 4};
+    int arr[5] = { 0, 1, 2, 3, 4 };
+
+    // extracting values out of arrays without index
+    int array_of_integers[] = { 4, 96, 1, 89, 0, 5 };
+    for (int num : array_of_integers){
+        std::cout << num << std::endl;
+    }
+
+    // get the length of the array
+    // old way: use c++ built in function sizeof(), note: subject to overflow/underflow
+    int length_of_array_old_way = sizeof(array_of_integers) / sizeof(array_of_integers[0]);
+    // new way: use standard library's std::size() function
+    int length_of_array_new_way = std::size(array_of_integers);
+
+    std::cout << "length of array: " << length_of_array_old_way << std::endl;
+    std::cout << "length of array: " << length_of_array_new_way << std::endl;
+
 
     // pointer is created with an *, and it must be the same data type as the data its pointing to
     int *pointer = &arr; 
