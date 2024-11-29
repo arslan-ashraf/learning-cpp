@@ -100,18 +100,6 @@ int main(){
     std::cout << "static_cast z = " << z_integer << std::endl;
     std::cout << "old c type conversion z = " << z_old_cast << std::endl;
 
-    // creating a single character, single quotes only, takes 1 byte (or 8 bits)
-    char single_character = 'c';
-
-    char a = 97; 
-    std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
-
-    // when a character type exceeds size value in a loop, the result is infinite loop
-    for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
-
-    // creating a string, must be created with double quotes
-    char str[] = "this is foo";
-
     // creating an array of int type
     int arr[] = { 0, 1, 2, 3, 4, 5 };
 
@@ -133,6 +121,31 @@ int main(){
     std::cout << "length of array: " << length_of_array_old_way << std::endl;
     std::cout << "length of array: " << length_of_array_new_way << std::endl;
 
+    // matrix height and width
+    int matrix[3][4];
+    int matrix_height = std::size(matrix);
+    int matrix_width = std::size(matrix[0]);
+    cout << "matrix height: " << matrix_height << endl;
+    cout << "matrix width: " << matrix_width << endl;
+
+    // creating a single character, single quotes only, takes 1 byte (or 8 bits)
+    char single_character = 'c';
+
+    char a = 97; 
+    std::cout << "char 97 is " << a << std::endl; // prints 'a', not 97 because of char
+
+    // when a character type exceeds size value in a loop, the result is infinite loop
+    for(char n = 0; n < 300; n++){} // this is an infinite loop, char is never more than 255
+
+    // creating a string, must be created with double quotes
+    // in some cases, the string termination character '\0' is not needed
+    char example_string[] = "this is an example string\0";
+
+    for (char s : example_string){
+        cout << s;
+    }
+    // another way to print the array of string
+    std::cout << example_string << std::endl;
 
     // pointer is created with an *, and it must be the same data type as the data its pointing to
     int *pointer = &arr; 
