@@ -64,3 +64,23 @@ int main(){
 
     return 0;
 }
+
+
+// looping through a string
+void my_print(char string[]){ // char string[] is the same as char *string
+    int i = 0;
+    while(*(string + i) != '\0'){
+    // while(string[i] != '\0'){ // same while loop
+        cout << string[i]; // string[i] is the same as *(string + i)
+        i += 1;
+    }
+}
+
+int main(){
+
+    char example_string[] = "this is an example string\0";
+
+    my_print(example_string);
+
+    return 0;
+}

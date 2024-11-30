@@ -1,24 +1,23 @@
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 
 using namespace std;
 
-int add_primes(int primes[], int num_primes){
-    int total = 0;
-    for (int i = 0; i < num_primes; i++){
-        total += primes[i];
+void my_print(char string[]){
+    int i = 0;
+    while(*(string + i) != '\0'){
+    // while(string[i] != '\0'){ // same while loop
+        cout << string[i]; // string[i] is the same as *(string + i)
+        i += 1;
     }
-    return total;
 }
 
 int main(){
 
-    int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
-    int num_primes = size(primes);
+    char example_string[] = "this is an example string\0";
 
-    int sum_of_primes = add_primes(primes, num_primes);
-
-    cout << "sum of primes: " << sum_of_primes;
+    my_print(example_string);
 
     return 0;
 }

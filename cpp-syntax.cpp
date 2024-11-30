@@ -130,6 +130,11 @@ int matrix_width = std::size(matrix[0]);
 cout << "matrix height: " << matrix_height << endl;
 cout << "matrix width: " << matrix_width << endl;
 
+/////////////////////////////////////////////////////////////////////
+//////////////////////// START - STRINGS ////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 // creating a single character, single quotes only, takes 1 byte (or 8 bits)
 char single_character = 'c';
 
@@ -149,6 +154,19 @@ for (char s : example_string){
 // another way to print the array of string
 std::cout << example_string << std::endl;
 
+// getting the length of a string
+char example_string[] = "this is a string\0";
+int length_of_string = strlen(example_string); // strlen() is from the string.h module
+
+cout << "length_of_string: " << length_of_string << endl;
+
+/////////////////////////////////////////////////////////////////////
+////////////////////////// END - STRINGS ////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+
+
 
 /////////////////////////////////////////////////////////////////////
 ///////////////// START - LOOPING THROUGH ARRAYS ////////////////////
@@ -156,7 +174,9 @@ std::cout << example_string << std::endl;
 
 // REVERSE ARRAY //
 
-    // int *pointer_primes is the same as int pointer_primes[]
+// int *pointer_primes is the same as int pointer_primes[]
+// just using the name of the array is equivalent to the address 
+// of the first element of the array
 void reverse_primes(int *pointer_primes, int num_primes){
     int *end = pointer_primes + num_primes - 1;
     int temp;
@@ -187,6 +207,8 @@ int main(){
 // REVERSE ARRAY - ANOTHER WAY //
 
 // int primes[] is the same as int *primes
+// just using the name of the array is equivalent to the address 
+// of the first element of the array
 void reverse_primes(int primes[], int num_primes){
     int *end = primes + num_primes - 1;
     int temp;
@@ -218,6 +240,8 @@ int main(){
 
 // int primes[] is the same as int *primes, remember int primes[] is a pointer
 // and primes[i] is the same *(primes + 1)
+// just using the name of the array is equivalent to the address 
+// of the first element of the array
 int add_primes(int primes[], int num_primes){
     int total = 0;
     for (int i = 0; i < num_primes; i++){
