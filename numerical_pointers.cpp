@@ -29,7 +29,7 @@ int main(){
     with const appearing first:
 
     const int x = 9;
-    const int *pointer_x = &x; // changeable constant
+    const int *pointer_x = &x; // changeable constant pointer
 
     However, this constant pointer (with const appearing first in the pointer) can 
     be changed. If it points to one variable, it can be changed to point to some other 
@@ -38,7 +38,7 @@ int main(){
     int y = 8;
     pointer_x = &y;
 
-    Constant pointers (with const appearing first in the pointer) can point to 
+    Constant pointers (with const appearing first in the pointer) can also point to 
     non constant variables but the pointer is still changeable:
 
     int x = 9;
@@ -49,7 +49,7 @@ int main(){
 
     However, if the const keyword appears after the * in the pointer declaration,
     then the pointer is itself the constant, it contains a fixed address and cannot 
-    later change its address point to something else:
+    later change its address to point to something else:
 
     int x = 9;
     int * const pointer_x = &x; // unchangeable pointer

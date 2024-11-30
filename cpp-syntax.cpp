@@ -7,7 +7,7 @@
 
 using namespace std; // this allows std functions to be called without std::
 
-#define variable 5 // this is a preprocessor, variable is now globally available and its value is 5
+#define my_variable 5 // this is a preprocessor, my_variable is now globally available and its value is 5
 
 // compile time vs run time
 // compile time is turning code into an executable binary
@@ -15,7 +15,8 @@ using namespace std; // this allows std functions to be called without std::
 // heavy computations should be done at comiple time because then they are only done once
 
 
-// to print to the console, double quotes, requires iostream library, using namespace std
+// to print to the console, double quotes, requires iostream library
+// using namespace std now longer requires std::<std_function> syntax
 
 // std::cout is for printing to terminal
 // std::cin is for reading from terminal
@@ -26,7 +27,7 @@ cout << "testing print ... \n";
 // another way
 cout << "another print ..." << endl;
 // another way using the printf function, requires stdio library
-printf("third way to print");
+printf("number %d in string", 0);
 
 // printf function integer types for embedding numeric variables in strings
 // int => "%d"
@@ -39,9 +40,9 @@ printf("third way to print");
 // double => "%f"
 // long double => "%Lf"
 
-std::cout << std::boolalpha; // print  boolean values as true or false instead of 1 or 0
+// use std::boolalpha to print  boolean values as true or false instead of 1 or 0
 bool true_or_false = false; // 1 byte
-std::cout << "bool = " << true_or_false << std::endl;
+std::cout << "\nbool = " << std::boolalpha << true_or_false << std::endl;
 std::cout << "sizeof bool: " << sizeof(bool) << " byte (8 bits) for a bool" << std::endl;
 
 short int short_integer; // 2 bytes
@@ -52,7 +53,7 @@ int an_integer = 10; // 4 bytes
 std::cout << "10 in hexadecimal: " << std::hex << an_integer << std::endl;
 // std::showbase prints the base 0x
 std::cout << "10 in hexadecimal: " << std::showbase << std::hex << an_integer << std::endl;
-// use bitset module std::bitset<num_right_most_bits_to_extract>()
+// use bitset module std::bitset<num_right_most_bits_to_extract>() to see number in binary
 std::cout << "10 in binary: " << std::bitset<4>(an_integer) << std::endl;
 
 // bitwise operations
@@ -94,7 +95,9 @@ float x_float = 1.5;
 float y_float = 3.5;
 
 // casting types
+// C++ new way of casting
 int z_integer = static_cast<int>(x_float) + static_cast<int>(y_float);
+// old way of casting in C
 int z_old_cast = (int)x_float + (int)y_float;
 
 std::cout << "static_cast z = " << z_integer << std::endl;
@@ -129,6 +132,8 @@ int matrix_height = std::size(matrix);
 int matrix_width = std::size(matrix[0]);
 cout << "matrix height: " << matrix_height << endl;
 cout << "matrix width: " << matrix_width << endl;
+
+
 
 /////////////////////////////////////////////////////////////////////
 //////////////////////// START - STRINGS ////////////////////////////
@@ -259,6 +264,7 @@ int main(){
 // int *pointer_primes is the same as int pointer_primes[]
 // just using the name of the array is equivalent to the address 
 // of the first element of the array
+// void reverse_primes(int primes[], int num_primes){
 void reverse_primes(int *pointer_primes, int num_primes){
     int *end = pointer_primes + num_primes - 1;
     int temp;
@@ -286,44 +292,13 @@ int main(){
     return 0;
 }
 
-// REVERSE ARRAY - ANOTHER WAY //
-
-// int primes[] is the same as int *primes
-// just using the name of the array is equivalent to the address 
-// of the first element of the array
-void reverse_primes(int primes[], int num_primes){
-    int *end = primes + num_primes - 1;
-    int temp;
-    while (primes <= end){
-        temp = *primes;
-        *primes = *end;
-        *end = temp;
-        primes += 1;
-        end -= 1;
-    }
-}
-
-int main(){
-
-    int primes[] = { 2, 3, 5, 7, 11, 13, 17 };
-    int num_primes = size(primes);
-
-    reverse_primes(primes, num_primes);
-
-    for (int i = 0; i < num_primes; i++){
-        cout << primes[i] << " ";
-    }
-
-    return 0;
-}
-
 
 // SUMMING AN ARRAY //
 
-// int primes[] is the same as int *primes, remember int primes[] is a pointer
-// and primes[i] is the same *(primes + 1)
 // just using the name of the array is equivalent to the address 
 // of the first element of the array
+// int primes[] is the same as int *primes, remember int primes[] is a pointer
+// and primes[i] is the same *(primes + i)
 int add_primes(int primes[], int num_primes){
     int total = 0;
     for (int i = 0; i < num_primes; i++){
@@ -343,6 +318,44 @@ int main(){
 
     return 0;
 }
+
+//////// START - DYNAMIC HEAP MEMORY ALLOCATION //////////
+
+void reverse_primes(int primes_start_pointer[], int num_primes){
+    int *primes_end_pointer = primes_start_pointer + num_primes - 1;
+    int temp;
+    while (primes_start_pointer <= primes_end_pointer){
+        temp = *primes_start_pointer;
+        *primes_start_pointer = *primes_end_pointer;
+        *primes_end_pointer = temp;
+        primes_start_pointer += 1;
+        primes_end_pointer -= 1;
+    }
+}
+
+int main(){
+
+    int num_primes = 5;
+    int *heap_memory_primes = new int[num_primes];
+
+    heap_memory_primes[0] = 2;
+    heap_memory_primes[1] = 3;
+    heap_memory_primes[2] = 5;
+    heap_memory_primes[3] = 7;
+    heap_memory_primes[4] = 11;
+
+    reverse_primes(heap_memory_primes, num_primes);
+
+    for (int i = 0; i < num_primes; i++){
+        cout << heap_memory_primes[i] << " ";
+    }
+
+    delete[] heap_memory_primes;
+
+    return 0;
+}
+
+///////// END - DYNAMIC HEAP MEMORY ALLOCATION ///////////
 
 /////////////////////////////////////////////////////////////////////
 ////////////////// END - LOOPING THROUGH ARRAYS /////////////////////
