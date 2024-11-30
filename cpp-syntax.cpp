@@ -361,6 +361,62 @@ int main(){
 ////////////////// END - LOOPING THROUGH ARRAYS /////////////////////
 /////////////////////////////////////////////////////////////////////
 
+
+
+/////////////////////////////////////////////////////////////////////
+///////////////// START - POINTER TO THE FUNCTION ///////////////////
+/////////////////////////////////////////////////////////////////////
+
+
+// pointers to the function is important when passing callback functions 
+// as arguments to other functions
+int add(int x, int y){
+    return x + y;
+}
+
+int main(){
+
+    // note: int *p (...) is a function p(...) that returns are pointer
+    // a pointer for the function itself must be initialized as int (*p)(...)
+    // int (*p)(int, int) = &add; 
+    int (*p)(int, int) = add; // function name is automatically the pointer
+    int result = add(4, 3);
+    cout << "result: " << result << endl;
+    
+    return 0;
+}
+
+
+///////// START - CALLBACKS & FUNCTION POINTERS ///////////
+
+// note: the callback function itself is like any normal function
+// its the function taking in the callback that requires extra syntax
+void callback_test(int x){
+    cout << "callback test working, x is: " << x << endl;
+}
+
+void some_function(void (*pointer_callback_test)(int), int x){
+    pointer_callback_test(x);
+}
+
+int main(){
+
+    // void (*p)(int) = &callback_test;
+    void (*pointer_to_function)(int) = callback_test;
+    
+    some_function(pointer_to_function, 0);
+    
+    return 0;
+}
+
+////////// END - CALLBACKS & FUNCTION POINTERS ////////////
+
+
+/////////////////////////////////////////////////////////////////////
+////////////////// END - POINTER TO THE FUNCTION ////////////////////
+/////////////////////////////////////////////////////////////////////
+
+
 // struct 
 struct Node {
     int key;
