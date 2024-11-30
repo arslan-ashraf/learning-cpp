@@ -4,12 +4,11 @@
 
 using namespace std;
 
+// another way to write my_print()
 void my_print(char string[]){
-    int i = 0;
-    while(*(string + i) != '\0'){
-    // while(string[i] != '\0'){ // same while loop
-        cout << string[i]; // string[i] is the same as *(string + i)
-        i += 1;
+    while(*string != '\0'){
+        cout << *string; // string is a pointer
+        string += 1;
     }
 }
 
