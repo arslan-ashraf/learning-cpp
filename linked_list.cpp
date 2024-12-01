@@ -47,30 +47,50 @@ class LinkedList {
             }
         }
 
-        void print_linked_list(){
+        void reverse_list(){
+            Node *left_list = nullptr;
+            Node *current_node = head_node;
+            Node *right_list = nullptr;
+
+            while (current_node != nullptr){
+                right_list = current_node->next;
+                current_node->next = left_list;
+                left_list = current_node;
+                current_node = right_list;
+            }
+            head_node = left_list;
+        }
+
+        void print_list(){
             Node *dummy_node = head_node;
 
             while(dummy_node != nullptr){
                 cout << dummy_node->data << " -> ";
                 dummy_node = dummy_node->next;
             }
-            cout << "Null" << endl;
+            cout << "null" << endl;
         }
 };
 
 int main(){
 
     LinkedList linked_list;
+    linked_list.insert(47);
     linked_list.insert(19);
     linked_list.insert(11);
     linked_list.insert(31);
-    linked_list.print_linked_list();
+    linked_list.insert(5);
+    linked_list.insert(37);
+    linked_list.print_list(); // 0 -> 47 -> 19 -> 11 -> 31 -> 5 -> 37 -> -1 -> null
 
     Node *some_node = new Node();
     some_node->data = 11;
 
     linked_list.remove(some_node);
-    linked_list.print_linked_list();
+    linked_list.print_list(); // 0 -> 47 -> 19 -> 31 -> 5 -> 37 -> -1 -> null
+
+    linked_list.reverse_list();
+    linked_list.print_list(); // -1 -> 37 -> 5 -> 31 -> 19 -> 47 -> 0 -> null
     
     return 0;
 }
