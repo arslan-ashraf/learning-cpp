@@ -37,6 +37,16 @@ class LinkedList {
             connector_node->next = new_node;
         }
 
+        void remove(Node *node_to_remove){
+            Node *dummy_node = head_node;
+            while (dummy_node != nullptr && dummy_node->next != nullptr){
+                if (dummy_node->next->data == node_to_remove->data){
+                    dummy_node->next = dummy_node->next->next;
+                }
+                dummy_node = dummy_node->next;
+            }
+        }
+
         void print_linked_list(){
             Node *dummy_node = head_node;
 
@@ -53,6 +63,13 @@ int main(){
     LinkedList linked_list;
     linked_list.insert(19);
     linked_list.insert(11);
+    linked_list.insert(31);
+    linked_list.print_linked_list();
+
+    Node *some_node = new Node();
+    some_node->data = 11;
+
+    linked_list.remove(some_node);
     linked_list.print_linked_list();
     
     return 0;
