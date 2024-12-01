@@ -39,28 +39,73 @@ class BinarySearchTree {
         }
 
         void inorder_traversal(){
+            cout << "Inorder traversal:   ";
             Node *_root = root;
             inorder_recursive(_root);
         }
 
         void inorder_recursive(Node *_root){
-            if (_root == nullptr){
-                return;
-            }
+            if (_root == nullptr) return;
             inorder_recursive(_root->left);   // left
             cout << _root->data << " ";       // head
             inorder_recursive(_root->right);  // right
+        }
+
+        void preorder_traversal(){
+            cout << "Preorder traversal:  ";
+            Node *_root = root;
+            preorder_recursive(_root);
+        }
+
+        void preorder_recursive(Node *_root){
+            if (_root == nullptr) return;
+
+            cout << _root->data << " ";       // head
+            preorder_recursive(_root->left);   // left
+            preorder_recursive(_root->right);  // right
+        }
+
+        void postorder_traversal(){
+            cout << "Postorder traversal: ";
+            Node *_root = root;
+            postorder_recursive(_root);
+        }
+
+        void postorder_recursive(Node *_root){
+            if (_root == nullptr) return;
+
+            postorder_recursive(_root->left);   // left
+            postorder_recursive(_root->right);  // right
+            cout << _root->data << " ";       // head
         }
 };
 
 int main(){
 
-    BinarySearchTree bst;
-    bst.insert(10);
-    bst.insert(0);
-    bst.insert(20);
-    bst.insert(15);
 
-    bst.inorder_traversal();
+        //              100
+        //         /           \
+        //        50           150
+        //     /     \       /     \
+        //    30     75    130     175
+        //          /              /
+        //         70            160
+
+    BinarySearchTree bst;
+    bst.insert(100);
+    bst.insert(50);
+    bst.insert(150);
+    bst.insert(30);
+    bst.insert(75);
+    bst.insert(70);
+    bst.insert(130);
+    bst.insert(175);
+    bst.insert(160);
+
+    bst.inorder_traversal(); // prints 30 50 70 75 100 130 150 160 175
+    cout << endl;
+    bst.preorder_traversal();  // prints 100 50 30 75 70 150 130 175 160
+    cout << endl;
+    bst.postorder_traversal();  // prints 30 70 75 50 130 160 175 150 100
 
 }
