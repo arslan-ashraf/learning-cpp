@@ -4,8 +4,8 @@ using namespace std;
 
 struct Node {
     int data;
-    Node *left = nullptr;
-    Node *right = nullptr;
+    Node *left;
+    Node *right;
 };
 
 class BinarySearchTree {
