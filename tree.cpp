@@ -59,7 +59,6 @@ class BinarySearchTree {
 
         void preorder_recursive(Node *_root){
             if (_root == nullptr) return;
-
             cout << _root->data << " ";       // head
             preorder_recursive(_root->left);   // left
             preorder_recursive(_root->right);  // right
@@ -73,7 +72,6 @@ class BinarySearchTree {
 
         void postorder_recursive(Node *_root){
             if (_root == nullptr) return;
-
             postorder_recursive(_root->left);   // left
             postorder_recursive(_root->right);  // right
             cout << _root->data << " ";       // head
